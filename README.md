@@ -1,4 +1,4 @@
-# newt-starter-yam
+# newt-starter-yam-bimanual
 
 A starter kit for running **MolmoAct-2** (`molmoact2-yam`) on **bimanual Ai2/I2RT YAM
 arms** with three Intel RealSense cameras, via the New Theory `newt` SDK. Clone, configure,
@@ -31,8 +31,8 @@ To scaffold/drive from macOS (no SocketCAN), see [`docs/macos.md`](docs/macos.md
 ## Setup
 
 ```bash
-gh repo clone new-theory-research/newt-starter-yam
-cd newt-starter-yam
+gh repo clone new-theory-research/newt-starter-yam-bimanual
+cd newt-starter-yam-bimanual
 uv sync
 ./scripts/setup            # writes ~/.config/nt/nt.toml; detects cameras + CAN
 export NT_API_KEY=your_key_here

@@ -1,5 +1,5 @@
 [project]
-name = "newt-starter-yam"
+name = "newt-starter-yam-bimanual"
 version = "0.1.0"
 description = "Starter kit: bimanual Ai2/I2RT YAM arms driven by MolmoAct-2 via the New Theory newt SDK"
 requires-python = ">=3.11"
