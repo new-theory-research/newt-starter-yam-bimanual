@@ -1,0 +1,35 @@
+[project]
+name = "newt-starter-yam"
+version = "0.1.0"
+description = "Starter kit: bimanual Ai2/I2RT YAM arms driven by MolmoAct-2 via the New Theory newt SDK"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "opencv-python-headless>=4.9",   # resize camera frames to the model's 378x378
+    # newt (private, install via gh/HTTPS credential helper):
+    #   uv pip install "newt @ git+https://github.com/new-theory-research/newt-python.git"
+    "newt",
+    # i2rt drives the YAM arms over CAN (private/source):
+    #   uv pip install "i2rt @ git+https://github.com/i2rt-robotics/i2rt.git"
+    "i2rt",
+    "pyrealsense2>=2.54",            # 3x RealSense; Linux/Windows wheels (macOS: see docs/macos.md)
+]
+
+[project.optional-dependencies]
+# Drive YAM over USB-CAN on a non-Linux host (macOS) via the bundled yamcan package.
+mac-can = ["python-can[gs_usb]>=4"]
+
+[tool.uv.sources]
+newt = { git = "https://github.com/new-theory-research/newt-python.git" }
+i2rt = { git = "https://github.com/i2rt-robotics/i2rt.git" }
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["run"]
+packages = ["yam", "yamcan"]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Wrapper for scripts/setup.py — runs it in the project's uv environment.
+set -e
+cd "$(dirname "$0")/.."
+if command -v uv >/dev/null 2>&1; then
+  exec uv run python scripts/setup.py "$@"
+else
+  exec python3 scripts/setup.py "$@"
+fi

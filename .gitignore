@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.ruff_cache/
+.pytest_cache/
+
+# uv
+uv.lock
+
+# Secrets / local state
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+
+# Recordings / captures
+recordings/
+*.mkv
+*.mp4

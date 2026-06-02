@@ -1,0 +1,29 @@
+# YAM × MolmoAct-2 rig config. Copy to ~/.config/nt/nt.toml (./scripts/setup does this).
+
+model = "molmoact2-yam"
+
+[arms]
+# CAN channels per arm. GROUND TRUTH VARIES PER RIG — ./scripts/setup detects/confirms.
+# (On our reference box: left=can1, right=can0.) Bring up before running:
+#   sudo ip link set <chan> up type can bitrate 1000000
+left_channel  = "can1"
+right_channel = "can0"
+bitrate       = 1000000
+bustype       = "socketcan"   # "slcan" / "gs_usb" to drive off-Linux via the yamcan shim
+
+[cameras]
+# Intel RealSense serials. MUST be on USB-3 (a D405 on USB-2 enumerates but won't stream).
+# ./scripts/setup enumerates connected cameras, checks link speed, and fills these in.
+top   = ""
+left  = ""
+right = ""
+
+[control]
+control_hz            = 25     # YAM training cadence; the 30-step plan plays at this rate
+max_joint_step        = 0.10   # per-step joint clamp (rad) — safety governor; loosen to ~0.5 as trust grows
+max_actions_per_chunk = 0      # 0 = execute the full 30-step plan; >0 = re-observe sooner (receding horizon)
+
+[run]
+task         = "Fold the towel and place it on the side."   # MolmoAct-2's in-distribution YAM eval task
+max_duration = 120
+force_ipv4   = false   # set true if this host's IPv6 path to Modal is broken (ours was)
