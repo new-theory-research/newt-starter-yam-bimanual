@@ -106,7 +106,12 @@ can also be overridden per-run via flags (`--task`, `--seconds`, `--max-joint-st
 | `scripts/find_cameras.py` | List RealSense serials + link speed. |
 | `scripts/usb_reset_realsense.py` | Software "replug" if a camera wedges (`sudo`). |
 
-## Known gotchas (learned the hard way — see your own DX log)
+## Known gotchas (learned the hard way)
+
+Full root-cause + fix checklist in [`docs/troubleshooting.md`](docs/troubleshooting.md) — the YAM
+brittleness is a known, upstream-unresolved issue, and notably **camera load on the same box can
+starve the 250 Hz motor loop past its 400 ms watchdog and *cause* the CAN dropouts.** Quick hits:
+
 
 - **`NT_INFERENCE_URL`** silently overrides discovery for *all* models → misrouting. `run.py` warns if set.
 - **IPv6 → Modal** blackholes on some hosts → set `force_ipv4 = true` (or `--ipv4`).
