@@ -21,7 +21,7 @@ run — the arms move.
 - **Two YAM arms** powered and wired to CAN adapters on this host.
 - **3 Intel RealSense cameras** on **USB-3** (a D405 on USB-2 enumerates but won't stream).
 - **NT API key** — `export NT_API_KEY=...`.
-- **GitHub access to `new-theory-research`** (for `newt`) — HTTPS via `gh`'s credential helper works.
+- **SSH key on a GitHub account with access to `new-theory-research`** (for `newt`) — access is by invitation from New Theory. Test with `ssh -T git@github.com`.
 - **Linux** (SocketCAN), **Python 3.11+**, and [uv](https://docs.astral.sh/uv/).
 
 This kit targets the Linux box that drives the arms — typically reached over SSH/Tailscale.

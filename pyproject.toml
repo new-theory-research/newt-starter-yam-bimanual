@@ -6,8 +6,8 @@ requires-python = ">=3.11"
 dependencies = [
     "numpy>=1.26",
     "opencv-python-headless>=4.9",   # resize camera frames to the model's 378x378
-    # newt (private, install via gh/HTTPS credential helper):
-    #   uv pip install "newt @ git+https://github.com/new-theory-research/newt-python.git"
+    # newt (private, install over SSH):
+    #   uv pip install "newt @ git+ssh://git@github.com/new-theory-research/newt-python.git"
     "newt",
     # i2rt drives the YAM arms over CAN (private/source):
     #   uv pip install "i2rt @ git+https://github.com/i2rt-robotics/i2rt.git"
@@ -20,7 +20,7 @@ dependencies = [
 mac-can = ["python-can[gs_usb]>=4"]
 
 [tool.uv.sources]
-newt = { git = "https://github.com/new-theory-research/newt-python.git" }
+newt = { git = "ssh://git@github.com/new-theory-research/newt-python.git" }
 i2rt = { git = "https://github.com/i2rt-robotics/i2rt.git" }
 
 [build-system]
